@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/roychoi/Desktop/projects/bank-analysis/frontend/app/layout.tsx"],"sourcesContent":["import React from 'react';\nimport { Metadata } from 'next';\n\nexport const metadata: Metadata = {\n  title: 'Your App Title',\n  description: 'A description of your app',\n};\n\nconst RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {\n  return (\n    <html lang=\"en\">\n      <head>\n        {/* Next.js will automatically inject necessary scripts and metadata */}\n      </head>\n      <body>\n        {children}\n      </body>\n    </html>\n  );\n};\n\nexport default RootLayout;\n"],"names":[],"mappings":";;;;;;AAGO,MAAM,WAAqB;IAChC,OAAO;IACP,aAAa;AACf;AAEA,MAAM,aAAsD,CAAC,EAAE,QAAQ,EAAE;IACvE,qBACE,8OAAC;QAAK,MAAK;;0BACT,8OAAC;;;;;0BAGD,8OAAC;0BACE;;;;;;;;;;;;AAIT;uCAEe"}},
+    {"offset": {"line": 41, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 52, "column": 0}, "map": {"version":3,"sources":["file:///Users/roychoi/Desktop/projects/bank-analysis/frontend/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = require('../../module.compiled').vendored[\n  'react-rsc'\n].ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":";AAAAA,OAAOC,OAAO,GAAGC,QAAQ,0HAAyBC,QAAQ,CACxD,YACD,CAACC,kBAAkB","ignoreList":[0]}},
+    {"offset": {"line": 54, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
