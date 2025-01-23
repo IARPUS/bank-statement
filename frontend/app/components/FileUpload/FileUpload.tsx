@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { uploadFile } from '@/app/utils/files';
 const FileUpload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
 
@@ -14,22 +14,7 @@ const FileUpload: React.FC = () => {
       alert('Please select a file first.');
       return;
     }
-
-    const formData = new FormData();
-    formData.append('file', file);
-    console.log('FormData:', formData.get('file'));
-
-
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
+    uploadFile('iarpus-bankstatement', 'user1', file)
   };
 
   return (
