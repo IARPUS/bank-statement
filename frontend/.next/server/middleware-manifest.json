@@ -2,36 +2,5 @@
   "version": 3,
   "middleware": {},
   "sortedMiddleware": [],
-  "functions": {
-    "/api/upload/route": {
-      "files": [
-        "server/server-reference-manifest.js",
-        "server/middleware-build-manifest.js",
-        "server/middleware-react-loadable-manifest.js",
-        "server/next-font-manifest.js",
-        "server/interception-route-rewrite-manifest.js",
-        "server/app/api/upload/route_client-reference-manifest.js",
-        "server/edge/chunks/_3735a0._.js",
-        "server/edge/chunks/[root of the server]__ad7352._.js",
-        "server/edge/chunks/edge-wrapper_a2bbfa.js"
-      ],
-      "name": "/api/upload",
-      "page": "/api/upload/route",
-      "matchers": [
-        {
-          "regexp": "^/api/upload(?:/)?$",
-          "originalSource": "/api/upload"
-        }
-      ],
-      "wasm": [],
-      "assets": [],
-      "env": {
-        "__NEXT_BUILD_ID": "development",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "cM+fcOTr4XjuVm97qZwzh5KSKhXpaeHRfS5Dd9DugJQ=",
-        "__NEXT_PREVIEW_MODE_ID": "9ae36afd11545fcb0f3da370ed38a11f",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "2bbb7105e12ce95ec8c8758136318111c7623a6715878a362318e8eae5a30681",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "9756e24d9a39ec15e50afcac1a3d4625d689b761bb44d28b11ff9b4f0143d291"
-      }
-    }
-  }
+  "functions": {}
 }

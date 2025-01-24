@@ -32,6 +32,30 @@ async function uploadFile(bucketName, filePath, file) {
         alert("Error uploading file: " + error.message);
     }
 }
+async function fetchBankStatementData(bucketName, filePath) {
+    try {
+        const response = await fetch("/api/textract", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                bucketName,
+                filePath
+            })
+        });
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || "Failed to fetch Textract data");
+        }
+        const data = await response.json();
+        console.log("Extracted data:", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching Textract data:", error);
+        alert("Error fetching bank statement data: " + error.message);
+    }
+}
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }

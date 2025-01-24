@@ -1,6 +1,5 @@
 {
-  "/api/upload/route": "app-edge-has-no-entrypoint",
   "/dashboard/page": "app/dashboard/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/files/upload/route": "app/api/files/upload/route.js"
+  "/main/dashboard/page": "app/main/dashboard/page.js"
 }
