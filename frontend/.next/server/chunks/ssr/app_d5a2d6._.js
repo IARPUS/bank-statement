@@ -56,6 +56,21 @@ async function fetchBankStatementData(bucketName, filePath) {
         alert("Error fetching bank statement data: " + error.message);
     }
 }
+const getMetaData = async (bucketName, filePath)=>{
+    const response = await fetch("/api/proxy-s3", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            bucketName: bucketName,
+            filePath: filePath,
+            mode: "metadata"
+        })
+    });
+    const data = await response.json();
+    return data;
+};
 }}),
 "[project]/app/components/FileUpload/FileUpload.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";

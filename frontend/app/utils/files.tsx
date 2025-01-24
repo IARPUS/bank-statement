@@ -1,4 +1,4 @@
-export async function uploadFile(bucketName, filePath, file) {
+export async function uploadFile(bucketName: string, filePath: string, file) {
   try {
     // Create a FormData object
     const formData = new FormData();
@@ -25,7 +25,7 @@ export async function uploadFile(bucketName, filePath, file) {
     alert("Error uploading file: " + error.message);
   }
 }
-async function fetchBankStatementData(bucketName, filePath) {
+export async function fetchBankStatementData(bucketName: string, filePath: string) {
   try {
     const response = await fetch("/api/textract", {
       method: "POST",
@@ -46,3 +46,25 @@ async function fetchBankStatementData(bucketName, filePath) {
     alert("Error fetching bank statement data: " + error.message);
   }
 }
+export async function getMetaData(bucketName: string, filePath: string) {
+  try {
+    const response = await fetch("/api/files/retrieve-metadata", {
+      method: "POST", // Ensure this is POST
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bucketName: bucketName,
+        directory: filePath,
+      }),
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Failed to fetch Textract data");
+    }
+
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error retrieving file data:", error);
+    alert("Error retrieving file data: " + error.message);
+  }
+};

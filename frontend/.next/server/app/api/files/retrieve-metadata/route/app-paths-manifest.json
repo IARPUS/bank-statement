@@ -1,0 +1,3 @@
+{
+  "/api/files/retrieve-metadata/route": "app/api/files/retrieve-metadata/route.js"
+}
