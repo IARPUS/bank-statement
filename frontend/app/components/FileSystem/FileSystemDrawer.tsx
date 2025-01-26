@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -16,7 +16,7 @@ export default function FileSystemDrawer() {
     <Box sx={{ width: 250 }} role="presentation">
       <Box>
         <Button onClick={toggleDrawer(false)}><FolderIcon></FolderIcon></Button>
-        <FileSystemTree></FileSystemTree>
+        <FileSystemTree />
       </Box>
     </Box>
   );

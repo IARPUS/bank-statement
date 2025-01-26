@@ -1,5 +1,12 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/main/dashboard/page": "app/main/dashboard/page.js",
-  "/api/files/retrieve-metadata/route": "app/api/files/retrieve-metadata/route.js"
+  "/api/files/retrieve-metadata/route": "app/api/files/retrieve-metadata/route.js",
+  "/api/files/analyze/tesseract/route": "app/api/files/analyze/tesseract/route.js",
+  "/main/dashboard/analysis/summary/page": "app/main/dashboard/analysis/summary/page.js",
+  "/api/files/analyze/openAI/parse/route": "app/api/files/analyze/openAI/parse/route.js",
+  "/main/dashboard/analysis/organized-data/page": "app/main/dashboard/analysis/organized-data/page.js",
+  "/api/files/analyze/openAI/summary/route": "app/api/files/analyze/openAI/summary/route.js",
+  "/main/dashboard/analysis/suggestions/page": "app/main/dashboard/analysis/suggestions/page.js",
+  "/api/files/analyze/openAI/analysis/route": "app/api/files/analyze/openAI/analysis/route.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

@@ -1,0 +1,27 @@
+{
+  "pages": {
+    "/main/dashboard/analysis/page": [
+      "static/chunks/node_modules_970830._.js",
+      "static/chunks/app_layout_tsx_83fc40._.js",
+      "static/chunks/app_layout_tsx_61af54._.js",
+      "static/chunks/node_modules_@mui_material_287fb3._.js",
+      "static/chunks/node_modules_@mui_x-tree-view_7a90a5._.js",
+      "static/chunks/node_modules_97bd6c._.js",
+      "static/chunks/app_d4b3c3._.js",
+      "static/chunks/app_main_layout_tsx_ba8900._.js",
+      "static/chunks/node_modules_lodash_706a43._.js",
+      "static/chunks/node_modules_recharts_es6_17fc07._.js",
+      "static/chunks/node_modules_c18186._.js",
+      "static/chunks/app_main_dashboard_analysis_page_tsx_3c50ce._.js",
+      "static/chunks/app_main_dashboard_analysis_page_tsx_770ce5._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_523921._.js",
+      "static/chunks/node_modules_next_dist_4bb10e._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_d0a96d._.js",
+      "static/chunks/_e69f0d._.js",
+      "static/chunks/_d95469._.js"
+    ]
+  }
+}

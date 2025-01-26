@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":["file:///Users/roychoi/Desktop/projects/bank-analysis/frontend/app/layout.tsx"],"sourcesContent":["'use client';\nimport React from 'react';\nimport { CssBaseline } from '@mui/material';\nimport { Metadata } from 'next';\nimport { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';\n\n\nconst RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {\n  return (\n    <html lang=\"en\">\n      <head>\n        {/* Next.js will automatically inject necessary scripts and metadata */}\n      </head>\n      <body>\n        <AppRouterCacheProvider>\n          <CssBaseline />\n          {children}\n        </AppRouterCacheProvider>\n      </body>\n    </html>\n  );\n};\n\nexport default RootLayout;\n"],"names":[],"mappings":";;;;AAIA;AAFA;AAFA;;;;AAOA,MAAM,aAAsD,CAAC,EAAE,QAAQ,EAAE;IACvE,qBACE,8OAAC;QAAK,MAAK;;0BACT,8OAAC;;;;;0BAGD,8OAAC;0BACC,cAAA,8OAAC,oOAAA,CAAA,yBAAsB;;sCACrB,8OAAC,yMAAA,CAAA,cAAW;;;;;wBACX;;;;;;;;;;;;;;;;;;AAKX;uCAEe"}},
+    {"offset": {"line": 86, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

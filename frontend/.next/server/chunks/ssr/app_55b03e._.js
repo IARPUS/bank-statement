@@ -95,8 +95,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$utils$2f$files$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/utils/files.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$SimpleTreeView$2f$SimpleTreeView$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/x-tree-view/SimpleTreeView/SimpleTreeView.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/material/Menu/Menu.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/material/MenuItem/MenuItem.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$TreeItem$2f$TreeItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/x-tree-view/TreeItem/TreeItem.js [app-ssr] (ecmascript)");
 'use client';
 ;
@@ -105,13 +103,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2
 ;
 ;
 ;
-;
-;
-function mapS3ResponseToTreeItems(response) {
+/**
+ * Maps S3 API response to TreeItems.
+ */ function mapS3ResponseToTreeItems(response) {
     const items = [];
+    // Map folders
     if (Array.isArray(response.folders)) {
         response.folders.forEach((folder)=>{
-            const folderName = folder.replace(/\/$/, '');
+            const folderName = folder.replace(/\/$/, ''); // Remove trailing '/'
             items.push({
                 id: folder,
                 label: folderName,
@@ -120,9 +119,10 @@ function mapS3ResponseToTreeItems(response) {
             });
         });
     }
+    // Map files
     if (Array.isArray(response.files)) {
         response.files.forEach((file)=>{
-            const fileName = file.key.split('/').pop() || file.key;
+            const fileName = file.key.split('/').pop() || file.key; // Extract file name
             items.push({
                 id: file.key,
                 label: fileName,
@@ -132,29 +132,39 @@ function mapS3ResponseToTreeItems(response) {
     }
     return items;
 }
-function renderTree(node, handleNodeClick, handleRightClick) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$TreeItem$2f$TreeItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TreeItem"], {
-        itemId: node.id,
-        label: node.label,
-        onClick: ()=>handleNodeClick(node.id),
-        onContextMenu: (event)=>handleRightClick(event, node.hasChildren ? 'folder' : 'file', node),
-        children: node.children?.map((child)=>renderTree(child, handleNodeClick, handleRightClick))
-    }, node.id, false, {
+/**
+ * Recursively renders TreeItems.
+ */ function renderTree(node, handleNodeClick, handleRightClick, handleCloseContextMenu) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$TreeItem$2f$TreeItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TreeItem"], {
+            itemId: node.id,
+            label: node.label,
+            onClick: ()=>handleNodeClick(node.id),
+            onContextMenu: (event)=>handleRightClick(event, node.hasChildren ? 'folder' : 'file', node),
+            children: node.children?.map((child)=>renderTree(child, handleNodeClick, handleRightClick, handleCloseContextMenu))
+        }, node.id, false, {
+            fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
+            lineNumber: 68,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-        lineNumber: 58,
+        lineNumber: 67,
         columnNumber: 5
     }, this);
 }
 function FileSystemTree() {
-    const [treeItems, setTreeItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [contextMenu, setContextMenu] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+    const [treeItems, setTreeItems] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.useState([]);
+    const [loading, setLoading] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.useState(true);
+    const [error, setError] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.useState(null);
+    const [contextMenu, setContextMenu] = useState(null);
+    // Fetch initial data
+    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.useEffect(()=>{
         const fetchData = async ()=>{
             try {
                 const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$utils$2f$files$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getMetaData"])('iarpus-bankstatement', 'user1/');
-                setTreeItems(mapS3ResponseToTreeItems(data));
+                const mappedItems = mapS3ResponseToTreeItems(data);
+                setTreeItems(mappedItems);
             } catch (err) {
                 console.error('Error fetching metadata:', err);
                 setError('Failed to load initial directory.');
@@ -164,6 +174,7 @@ function FileSystemTree() {
         };
         fetchData();
     }, []);
+    // Handle node clicks
     const handleNodeClick = async (nodeId)=>{
         const node = treeItems.find((item)=>item.id === nodeId);
         if (node && node.hasChildren && node.children?.length === 0) {
@@ -186,25 +197,17 @@ function FileSystemTree() {
             mouseX: event.clientX,
             mouseY: event.clientY,
             targetType: type,
-            targetId: node.id
+            targetId: node?.id
         });
     };
     const handleCloseContextMenu = ()=>{
         setContextMenu(null);
     };
-    const handleDelete = ()=>{
-        console.log(`Delete ${contextMenu?.targetId}`);
-        handleCloseContextMenu();
-    };
-    const handleUpload = ()=>{
-        console.log(`Upload new file to ${contextMenu?.targetId}`);
-        handleCloseContextMenu();
-    };
     if (loading) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: "Loading file system..."
     }, void 0, false, {
         fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-        lineNumber: 134,
+        lineNumber: 145,
         columnNumber: 23
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -214,70 +217,24 @@ function FileSystemTree() {
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-        lineNumber: 135,
+        lineNumber: 146,
         columnNumber: 21
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
         sx: {
             minHeight: 352,
-            minWidth: 250,
-            position: 'relative'
+            minWidth: 250
         },
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$SimpleTreeView$2f$SimpleTreeView$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SimpleTreeView"], {
-                children: treeItems.map((node)=>renderTree(node, handleNodeClick, handleRightClick))
-            }, void 0, false, {
-                fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-                lineNumber: 139,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                open: contextMenu !== null,
-                onClose: handleCloseContextMenu,
-                anchorReference: "anchorPosition",
-                anchorPosition: contextMenu !== null ? {
-                    top: contextMenu.mouseY,
-                    left: contextMenu.mouseX
-                } : undefined,
-                children: [
-                    contextMenu?.targetType === 'file' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        onClick: handleDelete,
-                        children: "Delete"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-                        lineNumber: 154,
-                        columnNumber: 11
-                    }, this),
-                    contextMenu?.targetType === 'folder' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                onClick: handleUpload,
-                                children: "Upload File"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-                                lineNumber: 158,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                onClick: handleDelete,
-                                children: "Delete"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-                                lineNumber: 159,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-                lineNumber: 143,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$x$2d$tree$2d$view$2f$SimpleTreeView$2f$SimpleTreeView$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SimpleTreeView"], {
+            children: treeItems.map((node)=>renderTree(node, handleNodeClick, handleRightClick, handleCloseContextMenu))
+        }, void 0, false, {
+            fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
+            lineNumber: 150,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/app/components/FileSystem/FileSystemTree.tsx",
-        lineNumber: 138,
+        lineNumber: 149,
         columnNumber: 5
     }, this);
 }

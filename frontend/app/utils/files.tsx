@@ -1,4 +1,5 @@
 export async function uploadFile(bucketName: string, filePath: string, file) {
+  console.log("Uploading file to s3")
   try {
     // Create a FormData object
     const formData = new FormData();
@@ -26,6 +27,7 @@ export async function uploadFile(bucketName: string, filePath: string, file) {
   }
 }
 export async function fetchBankStatementData(bucketName: string, filePath: string) {
+  console.log("Retrieving statement analysis data from textract")
   try {
     const response = await fetch("/api/textract", {
       method: "POST",
@@ -47,6 +49,7 @@ export async function fetchBankStatementData(bucketName: string, filePath: strin
   }
 }
 export async function getMetaData(bucketName: string, filePath: string) {
+  console.log("Retrieving file data from s3")
   try {
     const response = await fetch("/api/files/retrieve-metadata", {
       method: "POST", // Ensure this is POST
@@ -68,3 +71,111 @@ export async function getMetaData(bucketName: string, filePath: string) {
     alert("Error retrieving file data: " + error.message);
   }
 };
+export async function processBankStatementTextract(bucketName: string, filePath: string) {
+  const response = await fetch("/api/files/analyze/textract", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      bucketName: bucketName,
+      filePath: filePath,
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+  return data
+};
+
+export async function createNewDirectory(bucketName: string, filePath: string, newFileName: string) {
+  console.log("CREATING NEW DIRECTORY")
+}
+export async function processBankStatementTesseract(bucketName: string, filePath: string) {
+  const response = await fetch("/api/files/analyze/tesseract", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      bucketName: bucketName,
+      filePath: filePath,
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    console.error("Error:", error.error);
+    return;
+  }
+
+  const data = await response.json();
+  console.log("Extracted Text:", data.data.text);
+  return data.data.text
+};
+export async function parseBankStatementText(text: string) {
+  console.log("HERE")
+  try {
+    const response = await fetch("/api/files/analyze/openAI/parse", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to process text.");
+    }
+
+    const result = await response.json();
+    return result.parsedData;
+  } catch (error) {
+    console.error("Error processing bank statement:", error);
+    throw error;
+  }
+};
+export async function produceSummaryOpenAI(text: string) {
+  try {
+    const response = await fetch("/api/files/analyze/openAI/summary", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to process text.");
+    }
+
+    const result = await response.json();
+    return result.parsedData;
+  } catch (error) {
+    console.error("Error processing bank statement:", error);
+    throw error;
+  }
+};
+export async function analyzeOpenAI(text: string) {
+  try {
+    const response = await fetch("/api/files/analyze/openAI/analysis", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to process text.");
+    }
+
+    const result = await response.json();
+    return result.parsedData;
+  } catch (error) {
+    console.error("Error processing bank statement:", error);
+    throw error;
+  }
+};
+

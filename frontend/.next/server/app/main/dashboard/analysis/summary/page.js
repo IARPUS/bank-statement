@@ -1,0 +1,14 @@
+const CHUNK_PUBLIC_PATH = "server/app/main/dashboard/analysis/summary/page.js";
+const runtime = require("../../../../../chunks/ssr/[turbopack]_runtime.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_next_dist_7c458f._.js");
+runtime.loadChunk("server/chunks/ssr/[root of the server]__550d4a._.js");
+runtime.loadChunk("server/chunks/ssr/_1d10d2._.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_ce97a5._.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_b4e556.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_d758e6.js");
+runtime.loadChunk("server/chunks/ssr/app_main_layout_tsx_13cd79._.js");
+runtime.loadChunk("server/chunks/ssr/app_main_dashboard_layout_tsx_b73287._.js");
+runtime.loadChunk("server/chunks/ssr/app_main_dashboard_analysis_layout_tsx_b9fa00._.js");
+runtime.loadChunk("server/chunks/ssr/_da7341._.js");
+runtime.getOrInstantiateRuntimeModule("[project]/.next-internal/server/app/main/dashboard/analysis/summary/page/actions.js [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH);
+module.exports = runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/main/dashboard/analysis/summary/page { MODULE_0 => \"[project]/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)\", MODULE_1 => \"[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)\", MODULE_2 => \"[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)\", MODULE_3 => \"[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)\", MODULE_4 => \"[project]/app/main/layout.tsx [app-rsc] (ecmascript, Next.js server component)\", MODULE_5 => \"[project]/app/main/dashboard/layout.tsx [app-rsc] (ecmascript, Next.js server component)\", MODULE_6 => \"[project]/app/main/dashboard/analysis/layout.tsx [app-rsc] (ecmascript, Next.js server component)\", MODULE_7 => \"[project]/app/main/dashboard/analysis/summary/page.tsx [app-rsc] (ecmascript, Next.js server component)\" } [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH).exports;

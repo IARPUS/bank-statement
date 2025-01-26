@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/roychoi/Desktop/projects/bank-analysis/frontend/app/main/dashboard/page.tsx"],"sourcesContent":["'use client';\nimport type { NextPage } from 'next';\nconst DashBoard: NextPage = () => {\n  return (\n    <></>\n  );\n};\n\nexport default DashBoard;\n"],"names":[],"mappings":";;;;AAAA;;AAEA,MAAM,YAAsB;IAC1B,qBACE;AAEJ;uCAEe"}},
+    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
